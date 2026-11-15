@@ -14,7 +14,10 @@ Tareas en orden. Cada una dura de medio día a dos días y apunta a criterios de
 
 ## Semanas 1–5 — contenido y voz
 
-- [ ] T-01 Andamiaje: Vite + Preact + TypeScript strict, ESLint, Vitest, Playwright, scripts de `CLAUDE.md`. (Sin funcionalidad.)
+- [x] T-01 Andamiaje: Vite + Preact + TypeScript strict, ESLint, Vitest, Playwright, scripts de `CLAUDE.md`. (Sin funcionalidad.) Auditoría: Aprobada (`tasks/auditoria/T-01.md`). Pendientes derivados:
+  - Antes de T-10: decidir el WebView mínimo con los datos de T-00d y hacer que el build lo cumpla de verdad (sintaxis y funciones), con una prueba automática que lea `dist/`. Opciones: `@vitejs/plugin-legacy`, subir el mínimo (p. ej. Chrome 76) con aviso, o revisar el piso de Preact 10. Mientras tanto, `chrome61` es solo una etiqueta, no una garantía.
+  - Antes de T-13: decidir cómo se actualiza la app para que nunca se recargue sola a media sesión.
+  - En la próxima tarea que toque `tests/repo-rules.test.ts`: cerrar los huecos de las guardas (problemas 4 y 5 de la auditoría).
 - [ ] T-02 `tools/content-check`: validar CSV contra `schemas/vocabulario.schema.json`. → CA-01-01
 - [ ] T-03 `tools/pictos`: buscar y cachear pictogramas ARASAAC por `busqueda_arasaac`, guardar `arasaac_id`, autor y licencia. → CA-01-02
 - [ ] T-04 Proponer `contenido/layout/nucleo-layout.csv` (layouts teléfono y tablet, páginas núcleo, niveles) para revisión de terapeutas. → CA-01-09, base de CA-01-07
