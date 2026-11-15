@@ -55,20 +55,29 @@ Nunca digas que algo funciona en un dispositivo si no se probó en uno: escribe 
 
 ## Comandos
 
+Ya existen (T-01):
+
 ```
-npm install
+npm install                        # o `npm ci` para instalar exactamente lo del package-lock.json
+npx playwright install chromium    # una sola vez: descarga el Chromium de las pruebas e2e
 npm run dev            # app web en desarrollo
 npm run build          # PWA en dist/
+npm run preview        # sirve dist/ (el service worker solo existe en el build)
 npm test               # Vitest
 npm run test:e2e       # Playwright (incluye modo offline)
 npm run typecheck
 npm run lint
+```
+
+Pendientes (no existen todavía):
+
+```
 npm run content:build  # CSV -> tableros OBZ, PDF, audio pregenerado (tools/)
 npm run content:check  # valida CSV contra schemas/ y atribuciones
 npx cap sync android   # copia la PWA al proyecto Android
 ```
 
-Estos scripts no existen todavía: créalos en la primera tarea que los necesite y mantén esta lista al día.
+Crea cada script pendiente en la primera tarea que lo necesite y mantén esta lista al día.
 
 ## Ciclo plan → construcción → auditoría
 

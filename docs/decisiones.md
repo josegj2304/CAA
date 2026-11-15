@@ -74,4 +74,18 @@ Cada decisión tiene número, fecha, estado y razón. Para cambiar una decisión
 
 | Paquete | Uso | Licencia |
 |---|---|---|
-| (vacío: agregar aquí cada dependencia con su licencia al instalarla) | | |
+| `preact` | Interfaz de la app | MIT |
+| `workbox-window` | Registro del service worker en la app (lo exige `vite-plugin-pwa`) | MIT |
+| `vite` | Servidor de desarrollo y build (desarrollo) | MIT |
+| `@preact/preset-vite` | Preact dentro de Vite (desarrollo) | MIT |
+| `@babel/core` | Lo exige `@preact/preset-vite` (desarrollo) | MIT |
+| `vite-plugin-pwa` | Service worker y manifest (desarrollo) | MIT |
+| `workbox-build` | Lo exige `vite-plugin-pwa` (desarrollo) | MIT |
+| `typescript` | Lenguaje (desarrollo) | Apache-2.0 |
+| `eslint` | Linter (desarrollo) | MIT |
+| `@eslint/js` | Reglas base de ESLint (desarrollo) | MIT |
+| `typescript-eslint` | ESLint para TypeScript (desarrollo) | MIT |
+| `vitest` | Pruebas de unidad (desarrollo) | MIT |
+| `jsdom` | Navegador simulado para Vitest (desarrollo) | MIT |
+| `@playwright/test` | Pruebas e2e (desarrollo) | Apache-2.0 |
+| `@types/node` | Tipos de Node para configuración y pruebas (desarrollo) | MIT |
