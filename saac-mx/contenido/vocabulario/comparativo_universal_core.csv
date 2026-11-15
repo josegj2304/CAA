@@ -1,0 +1,37 @@
+en,propuesta_es_MX,en_Soto_Cooper,nota
+all,todo / todos,No,
+can,poder (puedo),No,
+different,diferente,No,
+do,hacer,Sí,Choca con 'make'.
+finished,ya / terminé / se acabó,"Sí (ya, acabar)",
+get,agarrar / tomar,Parcial (tomar),
+go,ir (vamos),Sí,CSULB eligió 'ir' en vez de 'vete'.
+good,bien / bueno,No,
+he,él,No,
+help,ayudar (ayúdame),No,
+here,aquí,Sí,
+I,yo,Sí,
+in,en / adentro,Sí (en),Choca con 'on'.
+it,eso (sujeto nulo),Sí (eso),No hay pronombre 'it' en español.
+like,gustar (me gusta),Sí,
+look,mirar (mira),Sí,
+make,hacer,Sí,Choca con 'do'.
+more,más,Sí,
+not,no,Sí,CSULB: 'no'.
+on,en / encima / prender,Sí (en),Polisémico.
+open,abrir,Sí,
+put,poner,Sí,
+same,mismo / igual,No,CSULB: 'mismo'.
+she,ella,No,
+some,un poco / algunos,No,
+stop,parar (para),Sí,
+that,eso / ese,Sí,
+turn,me toca / voltear,Sí (tocar),Polisémico: turno o girar.
+up,arriba,Sí,
+want,querer (quiero),Sí,
+what,¿qué?,Sí,
+when,¿cuándo?,No,
+where,¿dónde?,Sí,
+who,¿quién?,Sí,
+why,¿por qué?,Sí,
+you,tú,No (solo 'tuyo'),

@@ -1,0 +1,369 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "saac-mx/vocabulario.schema.json",
+  "title": "Filas de los CSV de contenido/vocabulario",
+  "description": "Cada CSV se valida fila por fila contra la definición que le corresponde. Las columnas estado_revision, revisor y comentario_terapeuta son las únicas que modifica la importación de revisión.",
+  "$defs": {
+    "revision": {
+      "type": "object",
+      "properties": {
+        "estado_revision": {
+          "enum": [
+            "Pendiente",
+            "Aprobado",
+            "Cambiar",
+            "Eliminar"
+          ]
+        },
+        "revisor": {
+          "type": "string"
+        },
+        "comentario_terapeuta": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "estado_revision"
+      ]
+    },
+    "tipo": {
+      "enum": [
+        "pronombre",
+        "verbo",
+        "adjetivo",
+        "adverbio",
+        "sustantivo",
+        "pregunta",
+        "preposición",
+        "social",
+        "determinante",
+        "conjunción",
+        "número"
+      ]
+    },
+    "nucleo": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/revision"
+        }
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^N[0-9]{3}$"
+        },
+        "palabra": {
+          "type": "string",
+          "minLength": 1
+        },
+        "forma_boton": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tipo": {
+          "$ref": "#/$defs/tipo"
+        },
+        "color_fitzgerald": {
+          "enum": [
+            "amarillo",
+            "verde",
+            "azul",
+            "naranja",
+            "morado",
+            "rosa",
+            "gris",
+            "blanco"
+          ]
+        },
+        "nivel": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "fuente": {
+          "type": "string"
+        },
+        "equivalente_en": {
+          "type": "string"
+        },
+        "busqueda_arasaac": {
+          "type": "string"
+        },
+        "arasaac_id": {
+          "type": [
+            "string",
+            "integer"
+          ],
+          "description": "Vacío hasta que tools/pictos lo llene."
+        },
+        "nota": {
+          "type": "string"
+        },
+        "formas": {
+          "type": "string",
+          "description": "Solo flexiones de la misma palabra (género, número, diminutivo, contracción), separadas por ', '. Sin ';' ni texto libre."
+        },
+        "sinonimos": {
+          "type": "string",
+          "description": "Otras palabras con el mismo sentido. Nunca se ofrecen como formas."
+        }
+      },
+      "required": [
+        "id",
+        "palabra",
+        "forma_boton",
+        "tipo",
+        "nivel",
+        "fuente"
+      ]
+    },
+    "verbo_formas": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/revision"
+        }
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^V[0-9]{3}$"
+        },
+        "infinitivo": {
+          "type": "string"
+        },
+        "pronominal": {
+          "type": "string"
+        },
+        "forma_boton": {
+          "type": "string"
+        },
+        "regla_boton": {
+          "type": "string"
+        },
+        "yo": {
+          "type": "string"
+        },
+        "tú": {
+          "type": "string"
+        },
+        "él_ella": {
+          "type": "string"
+        },
+        "nosotros": {
+          "type": "string"
+        },
+        "ellos_ustedes": {
+          "type": "string"
+        },
+        "pret_yo": {
+          "type": "string"
+        },
+        "pret_tú": {
+          "type": "string"
+        },
+        "pret_él_ella": {
+          "type": "string"
+        },
+        "ir_a": {
+          "type": "string"
+        },
+        "gerundio": {
+          "type": "string"
+        },
+        "participio": {
+          "type": "string"
+        },
+        "imperativo_tú": {
+          "type": "string"
+        },
+        "imperativo_neg_tú": {
+          "type": "string"
+        },
+        "ejemplo_o_nota": {
+          "type": "string"
+        },
+        "dativo": {
+          "enum": [
+            "sí",
+            "no"
+          ],
+          "description": "sí = verbo como gustar/doler: con pronombre se dice 'a ella le gusta'."
+        },
+        "presente_pronominal": {
+          "type": "string",
+          "description": "Formas pronominales del presente separadas por ', ' (me caigo, te caes, ...)."
+        },
+        "preterito_pronominal": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "infinitivo",
+        "forma_boton"
+      ],
+      "description": "El valor '—' significa que la forma no aplica (p. ej. imperativo de 'gustar')."
+    },
+    "periferico": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/revision"
+        }
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^P[0-9]{3,4}$"
+        },
+        "categoria": {
+          "type": "string"
+        },
+        "palabra": {
+          "type": "string"
+        },
+        "variantes": {
+          "type": "string"
+        },
+        "tipo": {
+          "$ref": "#/$defs/tipo"
+        },
+        "fuente": {
+          "enum": [
+            "Soto & Cooper 2021",
+            "Propuesta es-MX"
+          ]
+        },
+        "formas": {
+          "type": "string",
+          "description": "Solo flexiones de la misma palabra (género, número, diminutivo, contracción), separadas por ', '. Sin ';' ni texto libre."
+        },
+        "sinonimos": {
+          "type": "string",
+          "description": "Otras palabras con el mismo sentido. Nunca se ofrecen como formas."
+        },
+        "plantilla": {
+          "enum": [
+            "sí",
+            "no"
+          ]
+        },
+        "texto_voz": {
+          "type": "string",
+          "description": "Si existe, la voz dice este texto en lugar de `palabra` (p. ej., el nombre de la letra: B se dice 'be')."
+        }
+      },
+      "required": [
+        "id",
+        "categoria",
+        "palabra",
+        "tipo",
+        "fuente"
+      ]
+    },
+    "frase": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/revision"
+        }
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^F[0-9]{3}$"
+        },
+        "frase": {
+          "type": "string",
+          "description": "Puede contener {masculino|femenino} para resolver por el género del perfil."
+        },
+        "funcion": {
+          "enum": [
+            "social",
+            "pedir",
+            "rechazar",
+            "comentar",
+            "preguntar",
+            "sentimiento/estado",
+            "reparar",
+            "urgente",
+            "responder",
+            "elegir",
+            "llamar la atención",
+            "opinar",
+            "narrar"
+          ]
+        },
+        "poblacion": {
+          "enum": [
+            "todos",
+            "niños",
+            "adultos"
+          ]
+        },
+        "nivel": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3
+        },
+        "plantilla": {
+          "enum": [
+            "sí",
+            "no"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "frase",
+        "funcion",
+        "poblacion",
+        "nivel"
+      ]
+    },
+    "adulto": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/revision"
+        }
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^A[0-9]{3}$"
+        },
+        "seccion": {
+          "type": "string"
+        },
+        "texto_fuente": {
+          "type": "string"
+        },
+        "texto_es_MX_propuesto": {
+          "type": "string",
+          "description": "Un solo mensaje por fila. Puede contener {masculino|femenino}."
+        },
+        "fuente": {
+          "type": "string"
+        },
+        "plantilla": {
+          "enum": [
+            "sí",
+            "no"
+          ]
+        },
+        "busqueda_arasaac": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "seccion",
+        "texto_es_MX_propuesto",
+        "fuente"
+      ]
+    }
+  }
+}
